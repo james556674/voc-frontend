@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import JapaneseWorld from "./pages/JapaneseWorld"
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <JapaneseWorld />
   </React.StrictMode>,
   document.getElementById('root')
 );
