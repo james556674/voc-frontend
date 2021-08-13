@@ -310,9 +310,7 @@ const JapaneseWorld = () => {
     if(mode === "One Sound") {
       return (
         <>
-          <Button variant="contained" color="primary" onClick={() => showCard()}>
-            Change
-          </Button>
+          
           <div className="flip-card">
             <div className="flip-card-inner">
               <Card className="front flip-card-front">
@@ -324,6 +322,9 @@ const JapaneseWorld = () => {
 
             </div>
           </div>
+          <Button style={{marginTop: "1rem" }} variant="contained" color="primary" onClick={() => showCard()}>
+            Change
+          </Button>
         </>
       )
     }
