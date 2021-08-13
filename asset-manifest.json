@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/voc-frontend/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/voc-frontend/static/js/main.04380f2d.chunk.js",
+    "main.js.map": "/voc-frontend/static/js/main.04380f2d.chunk.js.map",
+    "runtime-main.js": "/voc-frontend/static/js/runtime-main.a003f6a8.js",
+    "runtime-main.js.map": "/voc-frontend/static/js/runtime-main.a003f6a8.js.map",
+    "static/js/2.3bcffebd.chunk.js": "/voc-frontend/static/js/2.3bcffebd.chunk.js",
+    "static/js/2.3bcffebd.chunk.js.map": "/voc-frontend/static/js/2.3bcffebd.chunk.js.map",
+    "static/js/3.13827a0f.chunk.js": "/voc-frontend/static/js/3.13827a0f.chunk.js",
+    "static/js/3.13827a0f.chunk.js.map": "/voc-frontend/static/js/3.13827a0f.chunk.js.map",
+    "index.html": "/voc-frontend/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/voc-frontend/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.3bcffebd.chunk.js.LICENSE.txt": "/voc-frontend/static/js/2.3bcffebd.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/voc-frontend/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a003f6a8.js",
+    "static/js/2.3bcffebd.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.04380f2d.chunk.js"
+  ]
+}
