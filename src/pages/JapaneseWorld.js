@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { AppBar, Card, Button, Tabs, Tab, Typography } from "@material-ui/core"
+import { AppBar, Card, Button, Tabs, Tab, Typography, Tooltip } from "@material-ui/core"
 import MenuIcon from '@material-ui/icons/Menu';
 
 const Container = styled.div`
@@ -51,6 +51,27 @@ const Container = styled.div`
       justify-content: center;
       align-items: center;
 
+      .back-content {
+        width: 100%;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        p {
+          font-size: 5rem;
+          color: rgb(112,112,112);
+        }
+
+        .rome {
+          font-size: 1.5rem;
+          position: absolute;
+          bottom: 0;
+        }
+      }
+
       p {
         font-size: 5rem;
         color: rgb(112,112,112);
@@ -75,6 +96,8 @@ const JapaneseWorld = () => {
   const [mode, setMode] = useState("All Sounds")
   const [number, setNumber] = useState(1)
   const [value, setValue] = useState(2)
+  const [isRome, setIsRome] = useState(false)
+  const [isFront, setIsFront] = useState(false)
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -84,187 +107,233 @@ const JapaneseWorld = () => {
   const dummyData = [
     {
       a: "あ",
-      b: "a"
+      b: "a",
+      c: "ア"
     },
     {
       a: "い",
-      b: "i"
+      b: "i",
+      c: "イ"
     },
     {
       a: "う",
-      b: "u"
+      b: "u",
+      c: "ウ"
     },
     {
       a: "え",
-      b: "e"
+      b: "e",
+      c: "エ"
     },
     {
       a: "お",
-      b: "o"
+      b: "o",
+      c: "オ"
     },
     {
       a: "か",
-      b: "ka"
+      b: "ka",
+      c: "カ"
     },
     {
       a: "き",
-      b: "ki"
+      b: "ki",
+      c: "キ"
     },
     {
       a: "く",
-      b: "ku"
+      b: "ku",
+      c: "ク"
     },
     {
       a: "け",
-      b: "ke"
+      b: "ke",
+      c: "ケ"
     },
     {
       a: "こ",
-      b: "ko"
+      b: "ko",
+      c: "コ"
     },
     {
       a: "さ",
-      b: "sa"
+      b: "sa",
+      c: "サ"
     },
     {
       a: "し",
-      b: "shi"
+      b: "shi",
+      c: "シ"
     },
     {
       a: "す",
-      b: "su"
+      b: "su",
+      c: "ス"
     },
     {
       a: "せ",
-      b: "se"
+      b: "se",
+      c: "セ"
     },
     {
       a: "そ",
-      b: "so"
+      b: "so",
+      c: "ソ"
     },
     {
       a: "た",
-      b: "ta"
+      b: "ta",
+      c: "タ"
     },
     {
       a: "ち",
-      b: "chi"
+      b: "chi",
+      c: "チ"
     },
     {
       a: "つ",
-      b: "tsu"
+      b: "tsu",
+      c: "ツ"
     },
     {
       a: "て",
-      b: "te"
+      b: "te",
+      c: "テ"
     },
     {
       a: "と",
-      b: "to"
+      b: "to",
+      c: "ト"
     },
     {
       a: "な",
-      b: "na"
+      b: "na",
+      c: "ナ"
     },
     {
       a: "に",
-      b: "ni"
+      b: "ni",
+      c: "ニ"
     },
     {
       a: "ぬ",
-      b: "nu"
+      b: "nu",
+      c: "ヌ"
     },
     {
       a: "ね",
-      b: "ne"
+      b: "ne",
+      c: "ネ"
     },
     {
       a: "の",
-      b: "no"
+      b: "no",
+      c: "ノ"
     },
     {
       a: "は",
-      b: "ha"
+      b: "ha",
+      c: "ハ"
     },
     {
       a: "ひ",
-      b: "hi"
+      b: "hi",
+      c: "ヒ"
     },
     {
       a: "ふ",
-      b: "fu"
+      b: "fu",
+      c: "フ"
     },
     {
       a: "へ",
-      b: "he"
+      b: "he",
+      c: "ヘ"
     },
     {
       a: "ほ",
-      b: "ho"
+      b: "ho",
+      c: "ホ"
     },
     {
       a: "ま",
-      b: "ma"
+      b: "ma",
+      c: "マ"
     },
     {
       a: "み",
-      b: "mi"
+      b: "mi",
+      c: "ミ"
     },
     {
       a: "む",
-      b: "mu"
+      b: "mu",
+      c: "ム"
     },
     {
       a: "め",
-      b: "me"
+      b: "me",
+      c: "メ"
     },
     {
       a: "も",
-      b: "mo"
+      b: "mo",
+      c: "モ"
     },
     {
       a: "や",
-      b: "ya"
+      b: "ya",
+      c: "オ"
     },
     {
       a: "ゆ",
-      b: "yu"
+      b: "yu",
+      c: "ユ"
     },
     {
       a: "よ",
-      b: "yo"
+      b: "yo",
+      c: "ヨ"
     },
     {
       a: "ら",
-      b: "ra"
+      b: "ra",
+      c: "ラ"
     },
     {
       a: "り",
-      b: "ri"
+      b: "ri",
+      c: "リ"
     },
     {
       a: "る",
-      b: "ru"
+      b: "ru",
+      c: "ル"
     },
     {
       a: "れ",
-      b: "re"
+      b: "re",
+      c: "レ"
     },
     {
       a: "ろ",
-      b: "ro"
+      b: "ro",
+      c: "ロ"
     },
     {
       a: "わ",
-      b: "wa"
+      b: "wa",
+      c: "ワ"
     },
     {
       a: "を",
-      b: "wo"
+      b: "wo",
+      c: "ヲ"
     },
     {
       a: "ん",
-      b: "n"
+      b: "n",
+      c: "ン"
     },
     
   ]
@@ -289,19 +358,21 @@ const JapaneseWorld = () => {
             <div className="flip-card">
               <div className="flip-card-inner">
                 <Card className="flip-card-front">
-                  <p>{data.a}</p>
+                  {isFront ? <p>{data.a}</p> : <p>{data.c}</p>}
                 </Card>
                 <Card className="flip-card-back">
-                  <p>{data.b}</p>
+                  <div className="back-content">
+                    {isFront ? <p>{data.c}</p> : <p>{data.a}</p>}
+                    {isRome && (
+                      <>
+                        <p className="rome">({data.b})</p>
+                      </>
+                    )}
+                  </div>
                 </Card>
-
               </div>
-
-
             </div>
-
           ))}
-
         </div>
 
       )
@@ -310,14 +381,21 @@ const JapaneseWorld = () => {
     if(mode === "One Sound") {
       return (
         <>
-          
           <div className="flip-card">
             <div className="flip-card-inner">
               <Card className="front flip-card-front">
-                <p>{dummyData[number].a}</p>
+                {isFront ? <p>{dummyData[number].a}</p> : <p>{dummyData[number].c}</p>}
+                
               </Card>
               <Card className="back flip-card-back">
-                <p>{dummyData[number].b}</p>
+                <div className="back-content">
+                  {isFront ? <p>{dummyData[number].c}</p> : <p>{dummyData[number].a}</p>}
+                  {isRome && (
+                    <>
+                      <p className="rome">({dummyData[number].b})</p>
+                    </>
+                  )}
+                </div>
               </Card>
 
             </div>
@@ -365,6 +443,22 @@ const JapaneseWorld = () => {
           <Tab label="All Sounds" />
           <Tab label="One Sound" />
         </Tabs>
+        <div style={{ marginBottom: "2rem" }}>
+          <Tooltip title="show romanization in card back side" aria-label="add">
+            <Button color="primary" style={{ marginRight: "2rem" }} variant="outlined" onClick={() => setIsRome(!isRome)}>
+              {isRome ? "Hide Pinyin" : "Show Pinyin"}
+            </Button>
+          </Tooltip>
+          <Tooltip title="reverse the card" aria-label="add">
+            <Button color="primary" variant="outlined" onClick={() => setIsFront(!isFront)}>
+              Reverse
+            </Button>
+          </Tooltip>
+          
+          
+
+        </div>
+        
         
 
         {showContent()}
