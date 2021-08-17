@@ -28,7 +28,7 @@ const Container = styled.div`
     margin-top: 0.5rem;
   }
 
-.flip-card {
+.flip-card, .no-flip-card{
   margin: 1rem;
   width: 200px;
   height: 230px;
@@ -95,7 +95,8 @@ const Container = styled.div`
 const JapaneseWorld = () => {
   const [mode, setMode] = useState("All Sounds")
   const [number, setNumber] = useState(1)
-  const [value, setValue] = useState(2)
+  const [simNumber, setSimNumber] = useState(0)
+  const [value, setValue] = useState(0)
   const [isRome, setIsRome] = useState(false)
   const [isFront, setIsFront] = useState(false)
 
@@ -338,11 +339,30 @@ const JapaneseWorld = () => {
     
   ]
 
+  const similarSound = [
+    ["あ", "お"],
+    ["ぬ", "め"],
+    ["ね", "れ", "わ"],
+    ["は", "ほ"],
+    ["ろ", "る"],
+    ["ア", "マ"],
+    ["シ", "ツ"],
+    ["ウ", "ワ"],
+    ["ン", "ソ"],
+  ]
+
   const showCard = () => {
     
     const num = Math.floor(Math.random() * 46)
     setNumber(num)
 
+  }
+
+  const similarSoundCards = () => {
+    
+    const num = Math.floor(Math.random() * 9)
+    console.log("num", num)
+    setSimNumber(num)
   }
 
   const showContent = () => {
@@ -406,6 +426,34 @@ const JapaneseWorld = () => {
         </>
       )
     }
+
+    if (mode === "Similar Combo") {
+      return (
+        <>
+          <div 
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            {similarSound[simNumber].map((sound) => {
+              return (
+                <div className="no-flip-card">
+                  <div className="flip-card-inner">
+                    <Card className="front flip-card-front">
+                      <p>{sound}</p>
+                    </Card>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          <Button style={{ marginTop: "1rem" }} variant="contained" color="primary" onClick={() => similarSoundCards()}>
+            Change
+          </Button>
+        </>
+      )
+    }
   }
   
   return (
@@ -442,15 +490,16 @@ const JapaneseWorld = () => {
         >
           <Tab label="All Sounds" />
           <Tab label="One Sound" />
+          <Tab label="Similar Combo" />
         </Tabs>
         <div style={{ marginBottom: "2rem" }}>
           <Tooltip title="show romanization in card back side" aria-label="add">
-            <Button color="primary" style={{ marginRight: "2rem" }} variant="outlined" onClick={() => setIsRome(!isRome)}>
+            <Button disabled={mode === "Similar Combo"} color="primary" style={{ marginRight: "2rem" }} variant="outlined" onClick={() => setIsRome(!isRome)}>
               {isRome ? "Hide Pinyin" : "Show Pinyin"}
             </Button>
           </Tooltip>
           <Tooltip title="reverse the card" aria-label="add">
-            <Button color="primary" variant="outlined" onClick={() => setIsFront(!isFront)}>
+            <Button disabled={mode === "Similar Combo"} color="primary" variant="outlined" onClick={() => setIsFront(!isFront)}>
               Reverse
             </Button>
           </Tooltip>
