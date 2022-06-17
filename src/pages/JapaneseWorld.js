@@ -284,7 +284,7 @@ const JapaneseWorld = () => {
     {
       a: "や",
       b: "ya",
-      c: "オ"
+      c: "ヤ"
     },
     {
       a: "ゆ",
